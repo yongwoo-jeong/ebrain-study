@@ -9,7 +9,6 @@ pageEncoding="UTF-8"%>
   <body>
     hello world
     <script>
-      location.href = "login.jsp";
     </script>
   </body>
 </html>
