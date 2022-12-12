@@ -7,9 +7,11 @@ pageEncoding="UTF-8"%>
     <title>JSP 게시판 웹 사이트</title>
   </head>
   <body>
-    hello world
-    <script>
-      location.href = "login.jsp";
-    </script>
+    <div class="container">
+      <div class="title"></div>
+      <div class="paragraph"></div>
+      <div class="comments"></div>
+      <div></div>
+    </div>
   </body>
 </html>
