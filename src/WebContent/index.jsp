@@ -1,5 +1,9 @@
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="post.Post" %>
+<%@ page import="post.PostDAO" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -50,15 +54,20 @@ pageEncoding="UTF-8"%>
           <span>등록일시</span>
           <span>수정일시</span>
         </div>
-        <div class="post">
-          <span>JAVA</span>
-          <span></span>
-          <span>OKKY 3월 세미나 서비스 개발자로 커리어 전환하기 by 와이즐..</span>
-          <span>정용우</span>
-          <span>12</span>
-          <span>2022.04.08 16:32</span>
-          <span>2022.04.08 16:40</span>
-        </div>
+<%--        <%--%>
+<%--          PostDAO pd = new PostDAO();--%>
+<%--          List<Post> ls = pd.selectPostAll();--%>
+<%--          for(Post po : ls) { %>--%>
+<%--          <div class="post">--%>
+<%--            <span><%=po.getCategory_id()%>></span>--%>
+<%--            <span>파일여부</span>--%>
+<%--            <span><%=po.getTitle()%></span>--%>
+<%--            <span><%=po.getWriter()%></span>--%>
+<%--            <span><%=po.getView()%></span>--%>
+<%--            <span><%=po.getCreated_at()%></span>--%>
+<%--            <span></span>--%>
+<%--          </div>--%>
+<%--        <% } %>--%>
       </div>
       <div class="pagination"></div>
       <button type="button" onclick="location.href='upload.jsp'">등록</button>
