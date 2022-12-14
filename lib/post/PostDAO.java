@@ -21,10 +21,11 @@ public class PostDAO {
         query.append("values ()");
     }
     //R
-    public void selectPost(int num){
+    public Post selectPost(int num){
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+        Post po = null;
         try{
             conn = util.getConnection();
             String selectAllQuery = "SELECT * FROM post ";
@@ -33,7 +34,7 @@ public class PostDAO {
             if(rs.next()){
                 // 검색 or 전체 조회를 할 때 모든 내용을 조회할 필요 X
                 // 일단 AllArgsConstructor 구현했기 때문에 아래처럼 전부 인스턴스에 삽입
-                Post po = new Post(
+                po = new Post(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -44,7 +45,6 @@ public class PostDAO {
                         rs.getDate(8),
                         rs.getInt(9),
                         rs.getInt(10));
-                System.out.println(po);
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class PostDAO {
             util.close(pstmt);
             util.close(conn);
         }
-        // Missing return statement 을 해결하기 위해 return null 이 올바른가?
+        return po;
     }
 
     // 검색기능은 좀있다가 구현
