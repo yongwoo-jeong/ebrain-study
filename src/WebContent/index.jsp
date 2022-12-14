@@ -69,7 +69,7 @@
             </svg>
 
             <%}%>
-            <span><%=po.getTitle()%></span>
+            <a href="post.jsp"><%=po.getTitle()%></a>
             <span><%=po.getWriter()%></span>
             <span><%=po.getView()%></span>
             <span><%=po.getCreated_at()%></span>

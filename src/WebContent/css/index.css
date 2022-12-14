@@ -68,8 +68,6 @@
   align-items: center;
   border-top: 1px solid black;
   border-bottom: 2px solid black;
-  position: relative;
-  left: -10px;
 }
 
 /* File width be small */
@@ -78,7 +76,8 @@
 }
 /* Title width be biggest */
 .post_outline span:nth-child(3) {
-  width: 40%;
+  width: 35%;
+  margin-right: 5%;
 }
 
 .post{
@@ -100,8 +99,9 @@ svg{
   margin-left: 5px;
 }
 
-.post span:nth-child(3) {
+.post a {
   width: 40%;
+  color: inherit;
 }
 
 .pagination{
