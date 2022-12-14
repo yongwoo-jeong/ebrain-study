@@ -1,30 +1,33 @@
 package post;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PostDAO {
-    private Connection conn = null;
-    private Statement stmt = null;
-    private ResultSet rs = null;
-
-    /**
-     *
-     */
-    public PostDAO(){
-        try{
-            String dbURL = "jdbc:mysql://localhost:3306/eb_bbs";
-            String dbID = "root";
-            String dbPassword = "1224";
-            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    // DB 역할
+    private Map<Integer, Post> db = new HashMap<>();
+    //C
+    public void insertPost(Post po){
+        db.put(po.getPost_id(), po);
+    }
+    //R
+    public Post selectPost(int num){
+        return db.get(num);
     }
 
+    public List<Post> selectPostAll(){
+        return new ArrayList<Post>(db.values());
+    }
 
+    //U
+    public void updatePost(Post po){
+        db.put(po.getPost_id(),po);
+    }
 
-
+    //D
+    public void deletePost(int num){
+        db.remove(num);
+    }
 }
