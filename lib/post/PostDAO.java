@@ -1,18 +1,17 @@
 package post;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.lang.Object.
+import java.util.List;
+
 public class PostDAO {
-
-
-    private Map<Integer, Post> db = new HashMap<>();
+    private JdbcConnectionUtil util;
+    public PostDAO() {
+        util = JdbcConnectionUtil.getInstance();
+    }
     //C
     public void insertPost(Post po){
         StringBuffer query = new StringBuffer();
@@ -26,7 +25,6 @@ public class PostDAO {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        JdbcConnectionUtil util = JdbcConnectionUtil.getInstance();
         try{
             conn = util.getConnection();
             String selectAllQuery = "SELECT * FROM post ";
@@ -50,6 +48,8 @@ public class PostDAO {
             }
         } catch (SQLException e){
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             util.close(rs);
             util.close(pstmt);
@@ -61,15 +61,14 @@ public class PostDAO {
     // 검색기능은 좀있다가 구현
     // where 문에 ? param 통해 구현하면 될 것같다.
     // 관건은 날짜 && category && 단어 포함 내용을 검색하는 방법을 어떻게 구현할지
-    public void selectPostAll() {
+    public List<Post> selectPostAll() {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        JdbcConnectionUtil util =  JdbcConnectionUtil.getInstance();
+        List<Post> result = new ArrayList<>();
         try{
             conn = util.getConnection();
-            String selectAllQuery = "SELECT * FROM post where post_id=?";
-            pstmt.setInt(1, 1);
+            String selectAllQuery = "SELECT * FROM post";
             pstmt = conn.prepareStatement(selectAllQuery);
             rs = pstmt.executeQuery();
             while (rs.next()){
@@ -86,24 +85,25 @@ public class PostDAO {
                 rs.getDate(8),
                 rs.getInt(9),
                 rs.getInt(10));
+                result.add(po);
             }
-        } catch (SQLException e){
+        } catch (SQLException | ClassNotFoundException e){
             e.printStackTrace();
         } finally {
             util.close(rs);
             util.close(pstmt);
             util.close(conn);
         }
-        // Missing return statement 을 해결하기 위해 return null 이 올바른가?
+        return result;
     }
 
     //U
-    public void updatePost(Post po){
-        db.put(po.getPost_id(),po);
-    }
-
-    //D
-    public void deletePost(int num){
-        db.remove(num);
-    }
+//    public void updatePost(Post po){
+//        db.put(po.getPost_id(),po);
+//    }
+//
+//    //D
+//    public void deletePost(int num){
+//        db.remove(num);
+//    }
 }

@@ -12,7 +12,6 @@ public class JdbcConnectionUtil {
     private String user = "root";
     private String password = "1224";
     private JdbcConnectionUtil(){
-
     }
 
     public static JdbcConnectionUtil getInstance() {
@@ -22,7 +21,8 @@ public class JdbcConnectionUtil {
         return instance;
     }
 
-    public Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("org.mariadb.jdbc.Driver");
         return DriverManager.getConnection(url,user,password);
     }
 
