@@ -9,8 +9,10 @@ public class FindCategoryId {
             category_id = 2;
         } else if (Objects.equals(category,"Javascript")) {
             category_id = 3;
-        } else {
+        } else if(Objects.equals(category, "Database")) {
             category_id = 4;
+        } else {
+            System.out.println("Category ID out of range.");
         }
         return category_id;
     }

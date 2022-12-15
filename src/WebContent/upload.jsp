@@ -15,17 +15,17 @@
   <header class="title"><h1>게시판 - 등록</h1></header>
   <main>
     <%-- HTML 태그 이외 서버상 제한 처리 필요 - writer, password, title, contet --%>
-    <form method="post" action=<%=request.getContextPath()%>/postUploadAction.jsp name="upload">
+    <form enctype="multipart/form-data" method="post" action=<%=request.getContextPath()%>/postUploadAction.jsp name="upload">
         <div class="upload_form_container">
         <div class="category_row container_row">
             <div><span>카테고리 *</span></div>
             <div>
                 <label for="category"></label>
-                <select name="category" id="category" required>
-                <option>카테고리 선택</option>
-                <option value="JAVA">JAVA</option>
-                <option value="Javascript">Javascript</option>
-                <option value="Database">Database</option>
+                    <select name="category" id="category" required>
+                        <option disabled selected>카테고리 선택</option>z
+                        <option value="JAVA">JAVA</option>
+                        <option value="Javascript">Javascript</option>
+                        <option value="Database">Database</option>
                 </select>
             </div>
         </div>
@@ -36,8 +36,8 @@
         <div class="password_row container_row">
             <div><span>비밀번호 *</span></div>
             <div>
-                <input name="password" placeholder="비밀번호" type="password" minlength="4" maxlength="15" required/>
-                <input name="password_confirm" placeholder="비밀번호 확인" type="password" minlength="4" maxlength="15" required/>
+                <input class="password" name="password" placeholder="비밀번호" type="password" minlength="4" maxlength="15" required/>
+                <input class="password_confirm" name="password_confirm" placeholder="비밀번호 확인" type="password" minlength="4" maxlength="15" required/>
             </div>
         </div>
         <div class="title_row container_row">
@@ -50,7 +50,9 @@
         </div>
         <div class="attach_file_row container_row">
             <div><span>파일첨부</span></div>
-            <div></div>
+            <div>
+                <input type="file" name="file" />
+            </div>
         </div>
         </div>
   <div class="button_container">
@@ -59,5 +61,15 @@
   </div>
     </form>
   </main>
+<script>
+  const password = document.querySelector(".password");
+  const password_confirm = document.querySelector(".password_confirm");
+
+  password_confirm.addEventListener("change", (e)=>{
+    if(e.target.value !== password.value){
+      alert("비밀번호가 일치하지 않습니다.")
+    }})
+
+</script>
 </body>
 </html>
