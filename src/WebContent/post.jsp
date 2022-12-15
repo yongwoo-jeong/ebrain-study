@@ -25,7 +25,13 @@
     <div>
         <span>등록일시</span>
         <span><%=po.getCreated_at()%></span>
-        <span><%=po.getModified_at()%></span>
+        <span>수정일시</span>
+        <% if (po.getModified_at() == null){%>
+            <span><%=po.getCreated_at()%></span>
+        <%} else {%>
+            <span><%=po.getModified_at()%></span>
+        <%}%>
+
     </div>
     <div>
         <div>

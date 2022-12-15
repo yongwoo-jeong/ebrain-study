@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * POST(게시글) CRUD를 위해 DB에 접근하는 클래스
+ */
 public class PostDAO {
     private JdbcConnectionUtil util;
     public PostDAO() {
@@ -20,7 +23,8 @@ public class PostDAO {
         // value 는 jsp 페이지 form 에서 넘겨받아야함.
         query.append("values ()");
     }
-    //R
+
+
     public Post selectPost(int num){
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -32,7 +36,6 @@ public class PostDAO {
             pstmt = conn.prepareStatement(selectAllQuery);
             rs = pstmt.executeQuery();
             if(rs.next()){
-                // 검색 or 전체 조회를 할 때 모든 내용을 조회할 필요 X
                 // 일단 AllArgsConstructor 구현했기 때문에 아래처럼 전부 인스턴스에 삽입
                 po = new Post(
                         rs.getInt(1),
@@ -61,6 +64,11 @@ public class PostDAO {
     // 검색기능은 좀있다가 구현
     // where 문에 ? param 통해 구현하면 될 것같다.
     // 관건은 날짜 && category && 단어 포함 내용을 검색하는 방법을 어떻게 구현할지
+
+    /**
+     * "SELECT * FROM post" 쿼리문을 통해 통해 POST 테이블 전체 조회하는 메소드
+     * @return PostVO 로 구성된 List 반환
+     */
     public List<Post> selectPostAll() {
         Connection conn = null;
         PreparedStatement pstmt = null;
