@@ -32,6 +32,4 @@ public class Post {
     @NonNull
     private Integer category_id;
 
-    public Post(String title, String writer, String password, String content, Integer categoryId) {
-    }
 }

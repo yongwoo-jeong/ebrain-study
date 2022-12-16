@@ -25,7 +25,7 @@ public class PostDAO {
         StringBuffer query = new StringBuffer();
         query.append("INSERT INTO post ");
         query.append("(title,writer,password,view,content,created_at,category_id)");
-        query.append("values (?, ?, ?, ?, ?, ?)");
+        query.append("values (?, ?, ?, ?, ?, ?, ?)");
         LocalDateTime currentDateTime = LocalDateTime.now();
         Date sqlDate = Date.valueOf(currentDateTime.toLocalDate());
         try{
@@ -38,7 +38,6 @@ public class PostDAO {
             pstmt.setString(5, po.getContent());
             pstmt.setDate(6, sqlDate);
             pstmt.setInt(7,po.getCategory_id());
-
             result = pstmt.executeUpdate();
             System.out.println(result+ "행이 삽입되었습니다.");
 
@@ -58,8 +57,9 @@ public class PostDAO {
         Post po = null;
         try{
             conn = util.getConnection();
-            String selectAllQuery = "SELECT * FROM post ";
+            String selectAllQuery = "SELECT * FROM post where post_id =?";
             pstmt = conn.prepareStatement(selectAllQuery);
+            pstmt.setInt(1, num);
             rs = pstmt.executeQuery();
             if(rs.next()){
                 // 일단 AllArgsConstructor 구현했기 때문에 아래처럼 전부 인스턴스에 삽입

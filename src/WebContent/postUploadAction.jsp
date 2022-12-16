@@ -6,6 +6,7 @@
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="post.PostDAO" %>
+<%@ page import="java.sql.Date" %>
 Created by IntelliJ IDEA.
   User: jyw
   Date: 2022/12/15
@@ -35,7 +36,7 @@ Created by IntelliJ IDEA.
                 response.sendRedirect(request.getContextPath()+"/upload.jsp");
             }
             Integer category_id = new FindCategoryId().Main(category);
-            Post po = new Post(title, writer,password, content, category_id);
+            Post po = new Post(null, title, writer, password, null, content, new Date(2014, 1,11) ,null, category_id);
             PostDAO pd = new PostDAO();
             pd.insertPost(po);
 
