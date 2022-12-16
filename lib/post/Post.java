@@ -31,7 +31,6 @@ public class Post {
     private Date modified_at;
     @NonNull
     private Integer category_id;
-    private Integer file_id;
 
     public Post(String title, String writer, String password, String content, Integer categoryId) {
     }

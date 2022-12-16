@@ -5,6 +5,7 @@
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Enumeration" %>
+<%@ page import="post.PostDAO" %>
 Created by IntelliJ IDEA.
   User: jyw
   Date: 2022/12/15
@@ -28,16 +29,6 @@ Created by IntelliJ IDEA.
             String content = multi.getParameter("content");
             String password = multi.getParameter("password");
             String password_confirm = multi.getParameter("password_confirm");
-            Enumeration files = multi.getFileNames();
-            while (files.hasMoreElements()){
-                String param = (String) files.nextElement();
-                String fileName = multi.getOriginalFileName(param);
-                String filesystemName = multi.getFilesystemName(param);
-                if(fileName == null) continue;
-                System.out.println(fileName);
-                System.out.println(filesystemName);
-            }
-
             if (!Objects.equals(password, password_confirm)){
                 // 비밀번호가 일치하지 않을 경우
                 // 이전 페이지로 오류 안내 메세지와 함께 돌려보내기
@@ -45,6 +36,19 @@ Created by IntelliJ IDEA.
             }
             Integer category_id = new FindCategoryId().Main(category);
             Post po = new Post(title, writer,password, content, category_id);
+            PostDAO pd = new PostDAO();
+            pd.insertPost(po);
+
+            Enumeration files = multi.getFileNames();
+            while (files.hasMoreElements()){
+                String param = (String) files.nextElement();
+                String fileName = multi.getOriginalFileName(param);
+                String filesystemName = multi.getFilesystemName(param);
+                if(fileName == null) continue;
+
+            }
+
+
         } catch (Exception e){
             e.printStackTrace();
         } finally {

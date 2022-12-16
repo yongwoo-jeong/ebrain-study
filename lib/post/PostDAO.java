@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +19,35 @@ public class PostDAO {
     }
     //C
     public void insertPost(Post po){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        int result = 0;
         StringBuffer query = new StringBuffer();
-        query.append("INSERT INTO (post) ");
-        query.append("(title,writer,password,content,created_at,category_id,file_id)");
-        // value 는 jsp 페이지 form 에서 넘겨받아야함.
-        query.append("values ()");
+        query.append("INSERT INTO post ");
+        query.append("(title,writer,password,view,content,created_at,category_id)");
+        query.append("values (?, ?, ?, ?, ?, ?)");
         LocalDateTime currentDateTime = LocalDateTime.now();
         Date sqlDate = Date.valueOf(currentDateTime.toLocalDate());
+        try{
+            conn = util.getConnection();
+            pstmt = conn.prepareStatement(query.toString());
+            pstmt.setString(1, po.getTitle());
+            pstmt.setString(2, po.getWriter());
+            pstmt.setString(3, po.getPassword());
+            pstmt.setInt(4, 0); // view starts from 0
+            pstmt.setString(5, po.getContent());
+            pstmt.setDate(6, sqlDate);
+            pstmt.setInt(7,po.getCategory_id());
+
+            result = pstmt.executeUpdate();
+            System.out.println(result+ "행이 삽입되었습니다.");
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            util.close(pstmt);
+            util.close(conn);
+        }
     }
 
 
@@ -51,8 +72,7 @@ public class PostDAO {
                         rs.getString(6),
                         rs.getDate(7),
                         rs.getDate(8),
-                        rs.getInt(9),
-                        rs.getInt(10));
+                        rs.getInt(9));
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -96,8 +116,7 @@ public class PostDAO {
                 rs.getString(6),
                 rs.getDate(7),
                 rs.getDate(8),
-                rs.getInt(9),
-                rs.getInt(10));
+                rs.getInt(9));
                 result.add(po);
             }
         } catch (SQLException | ClassNotFoundException e){
