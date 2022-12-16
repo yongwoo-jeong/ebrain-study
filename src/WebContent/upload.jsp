@@ -22,7 +22,7 @@
             <div>
                 <label for="category"></label>
                     <select name="category" id="category" required>
-                        <option disabled selected>카테고리 선택</option>z
+                        <option value="" selected>카테고리 선택</option>z
                         <option value="JAVA">JAVA</option>
                         <option value="Javascript">Javascript</option>
                         <option value="Database">Database</option>
@@ -51,7 +51,9 @@
         <div class="attach_file_row container_row">
             <div><span>파일첨부</span></div>
             <div>
-                <input type="file" name="file" />
+                <input type="file" name="file1" />
+                <input type="file" name="file2" />
+                <input type="file" name="file3" />
             </div>
         </div>
         </div>
@@ -63,12 +65,20 @@
   </main>
 <script>
   const password = document.querySelector(".password");
-  const password_confirm = document.querySelector(".password_confirm");
+  const passwordConfirm = document.querySelector(".password_confirm");
+  const categorySelect = document.querySelector("select");
+  const saveButton = document.querySelector(".save_button");
 
-  password_confirm.addEventListener("change", (e)=>{
+
+  passwordConfirm.addEventListener("change", (e)=>{
     if(e.target.value !== password.value){
       alert("비밀번호가 일치하지 않습니다.")
     }})
+  // saveButton.addEventListener("click", ()=>{
+  //   if(categorySelect.value === ""){
+  //     alert("카테고리를 선택해주세요.")
+  //   }
+  // })
 
 </script>
 </body>

@@ -33,13 +33,6 @@ public class Post {
     private Integer category_id;
     private Integer file_id;
 
-    /**
-     * postUploadAction 에서 필요한 인자만 받는 생성자
-     * @param title
-     * @param writer
-     * @param password
-     * @param content
-     */
-    public Post(String title, String writer, String password, String content) {
+    public Post(String title, String writer, String password, String content, Integer categoryId) {
     }
 }

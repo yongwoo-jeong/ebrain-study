@@ -1,9 +1,12 @@
 package post;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +22,11 @@ public class PostDAO {
     public void insertPost(Post po){
         StringBuffer query = new StringBuffer();
         query.append("INSERT INTO (post) ");
-        query.append("(post_id,title,writer,password,content,created_at,category_id,file_id)");
+        query.append("(title,writer,password,content,created_at,category_id,file_id)");
         // value 는 jsp 페이지 form 에서 넘겨받아야함.
         query.append("values ()");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        Date sqlDate = Date.valueOf(currentDateTime.toLocalDate());
     }
 
 

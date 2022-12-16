@@ -2,8 +2,10 @@
 <%@ page import="java.util.Objects" %>
 <%@ page import="post.FindCategoryId" %>
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
-<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %><%--
-  Created by IntelliJ IDEA.
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@ page import="java.io.File" %>
+<%@ page import="java.util.Enumeration" %>
+Created by IntelliJ IDEA.
   User: jyw
   Date: 2022/12/15
   Time: 10:17 AM
@@ -12,13 +14,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    System.out.println(request.getContextPath());
     String encType = "utf-8";
     int maxSize = 5*1024*1024;
-    String realFolder = "/Users/jyw/Desktop/project/java/bbs/src/file";
+    String uploadPath = request.getSession().getServletContext().getRealPath("/file");
+    System.out.println(uploadPath);
     MultipartRequest multi;
         try{
-            multi = new MultipartRequest(request, realFolder, maxSize, encType,
+            multi = new MultipartRequest(request, uploadPath, maxSize, encType,
                     new DefaultFileRenamePolicy());
             String category = multi.getParameter("category");
             String title = multi.getParameter("title");
@@ -26,26 +28,30 @@
             String content = multi.getParameter("content");
             String password = multi.getParameter("password");
             String password_confirm = multi.getParameter("password_confirm");
-
-            if (!Objects.equals(password, password_confirm)){
-//        다시 이전 페이지로 오류 안내 메세지와 함께 돌려보내기
-                response.sendRedirect(request.getContextPath()+"/upload.jsp");
-
+            Enumeration files = multi.getFileNames();
+            while (files.hasMoreElements()){
+                String param = (String) files.nextElement();
+                String fileName = multi.getOriginalFileName(param);
+                String filesystemName = multi.getFilesystemName(param);
+                if(fileName == null) continue;
+                System.out.println(fileName);
+                System.out.println(filesystemName);
             }
 
-            System.out.println(category);
-            System.out.println(title);
-            System.out.println(writer);
-            System.out.println(content);
-            System.out.println(password);
-
+            if (!Objects.equals(password, password_confirm)){
+                // 비밀번호가 일치하지 않을 경우
+                // 이전 페이지로 오류 안내 메세지와 함께 돌려보내기
+                response.sendRedirect(request.getContextPath()+"/upload.jsp");
+            }
             Integer category_id = new FindCategoryId().Main(category);
-            System.out.println(category_id);
-
-            Post po = new Post(title, writer,password, content);
+            Post po = new Post(title, writer,password, content, category_id);
         } catch (Exception e){
             e.printStackTrace();
+        } finally {
+            response.sendRedirect("/index.jsp");
         }
+
+
 
 
 %>

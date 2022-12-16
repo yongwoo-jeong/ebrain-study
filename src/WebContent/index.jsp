@@ -1,6 +1,7 @@
 <%@ page import="post.Post" %>
 <%@ page import="post.PostDAO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.time.LocalDateTime" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,6 +15,8 @@
     <title>게시판 - 목록</title>
   </head>
   <body>
+  <%
+  %>
     <div class="container">
       <header class="title"><h1>자유 게시판 - 목록</h1></header>
       <div class="search_nav">
@@ -60,7 +63,7 @@
         %>
           <div class="post">
             <span><%=po.getCategory_id()%></span>
-            <% System.out.println(po.getFile_id());%>
+<%--            <% System.out.println(po.getFile_id());%>--%>
             <% if (po.getFile_id() == 0){%>
             <svg></svg>
             <%} else {%>
