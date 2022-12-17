@@ -70,15 +70,6 @@
   border-bottom: 2px solid black;
 }
 
-/* File width be small */
-.post_outline span:nth-child(2) {
-  width: 1%;
-}
-/* Title width be biggest */
-.post_outline span:nth-child(3) {
-  width: 35%;
-  margin-right: 5%;
-}
 
 .post{
   width: 100%;
@@ -96,12 +87,12 @@ svg{
 
 .post span:nth-child(2) {
   width: 5%;
-  margin-left: 5px;
 }
 
-.post a {
+.post_title {
   width: 40%;
   color: inherit;
+  margin-left: 40px;
 }
 
 .pagination{

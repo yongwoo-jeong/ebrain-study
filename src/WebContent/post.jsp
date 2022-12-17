@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="css/post.css">
     <title>Title</title>
 </head>
 <body>
@@ -17,53 +18,59 @@
     PostDAO pd = new PostDAO();
     Post po = pd.selectPost(Integer.parseInt(id));
 %>
+<div class="container">
 <header class="header">게시판 - 보기</header>
-<div>
-    <div>
+<div class="writer_time_row">
+    <div class="writer_div">
         <span><%=po.getWriter()%></span>
     </div>
     <div>
         <span>등록일시</span>
-        <span><%=po.getCreated_at()%></span>
-        <span>수정일시</span>
         <% if (po.getModified_at() == null){%>
             <span><%=po.getCreated_at()%></span>
         <%} else {%>
+            <span><%=po.getCreated_at()%></span>
+            <span>수정일시</span>
             <span><%=po.getModified_at()%></span>
         <%}%>
-
     </div>
-    <div>
+</div>
+    <div class="title_row">
         <div>
-            <span><%=po.getCategory_id()%></span>
+            <% if (po.getCategory_id() == 1) {%>
+                <span>[JAVA]</span>
+            <% } else if (po.getCategory_id() == 2) { %>
+                <span>[Javascript]</span>
+            <% } else if (po.getCategory_id() == 3) {%>
+                <span>[JAVA]</span>
+            <% } %>
+
             <span><%=po.getTitle()%></span>
         </div>
-        <div>
+        <div class="view">
             <span>조회수: </span>
             <span><%=po.getView()%></span>
         </div>
     </div>
-    <div>
+    <div class="post_container">
         <p><%=po.getContent()%></p>
     </div>
-    <div>
-        <% if (po.getFile_id() == 0){%>
-        <%} else {%>
+    <div class="file_container">
+<%--        <% if (po.getFile_id() == 0){%>--%>
+<%--        <%} else {%>--%>
         <a>첨부파일 있을경우 이름</a>
-        <%}%>
+<%--        <%}%>--%>
     </div>
     <div class="comments_container">
 <%--댓글 테스트 인스턴스 만들고 작성 --%>
     </div>
     <div class="button_set_container">
-        <button>목록</button>
-        <button>수정</button>
-        <button>삭제</button>
+        <div class="button_set">
+            <a href="index.jsp" class="list_button">목록</a>
+            <a class="modi_del_btn">수정</a>
+            <a class="modi_del_btn">삭제</a>
+        </div>
     </div>
-
-
 </div>
-
-<%=po.getTitle()%>
 </body>
 </html>

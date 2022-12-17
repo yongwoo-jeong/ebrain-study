@@ -47,10 +47,9 @@
       </div>
       <div class="search_outcome">총 512건</div>
       <div class="post_container">
-        <div class="post_outline">
+        <div class="post">
           <span>카테고리</span>
-          <span>   </span>
-          <span>제목</span>
+          <a class="post_title">제목</a>
           <span>작성자</span>
           <span>조회수</span>
           <span>등록일시</span>
@@ -64,14 +63,14 @@
           <div class="post">
             <span><%=po.getCategory_id()%></span>
 <%--            <% System.out.println(po.getFile_id());%>--%>
-            <% if (po.getFile_id() == 0){%>
-            <svg></svg>
-            <%} else {%>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-              <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-            </svg>
-            <%}%>
-            <a href="/post.jsp?id=<%= po.getPost_id()%>"><%=po.getTitle()%></a>
+<%--            <% if ( true ){%>--%>
+<%--            <svg></svg>--%>
+<%--            <%} else {%>--%>
+<%--            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">--%>
+<%--              <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />--%>
+<%--            </svg>--%>
+<%--            <%}%>--%>
+            <a class="post_title" href="/post.jsp?id=<%= po.getPost_id()%>"><%=po.getTitle()%></a>
             <span><%=po.getWriter()%></span>
             <span><%=po.getView()%></span>
             <span><%=po.getCreated_at()%></span>
