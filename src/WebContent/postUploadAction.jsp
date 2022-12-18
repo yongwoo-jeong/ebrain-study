@@ -35,7 +35,7 @@ Created by IntelliJ IDEA.
                 // 이전 페이지로 오류 안내 메세지와 함께 돌려보내기
                 response.sendRedirect(request.getContextPath()+"/upload.jsp");
             }
-            Integer category_id = new FindCategoryId().Main(category);
+            Integer category_id = new FindCategoryId().findCategoryIdFn(category);
             Post po = new Post(null, title, writer, password, null, content, new Date(2014, 1,11) ,null, category_id);
             PostDAO pd = new PostDAO();
             pd.insertPost(po);
@@ -48,8 +48,6 @@ Created by IntelliJ IDEA.
                 if(fileName == null) continue;
 
             }
-
-
         } catch (Exception e){
             e.printStackTrace();
         } finally {

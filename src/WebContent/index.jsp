@@ -2,6 +2,7 @@
 <%@ page import="post.PostDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDateTime" %>
+<%@ page import="post.FindCategoryId" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,7 +62,7 @@
           for(Post po : ls) {
         %>
           <div class="post">
-            <span><%=po.getCategory_id()%></span>
+            <span><%= new FindCategoryId().findCategoryName(po.getCategory_id()) %></span>
 <%--            <% System.out.println(po.getFile_id());%>--%>
 <%--            <% if ( true ){%>--%>
 <%--            <svg></svg>--%>
