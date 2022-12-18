@@ -67,7 +67,7 @@
             <div>댓글내용</div>
         </div>
         <div>
-            <form method="post" action=<%=request.getContextPath()%>/postUploadAction.jsp name="upload">
+            <form method="post" action=<%=request.getContextPath()%>/commentUploadAction.jsp?id=<%po.getPost_id();%> name="upload">
                 <input class="comment_input" type="text" placeholder="댓글을 입력해주세요" />
                 <input type="submit" class="save_button" value="저장" />
             </form>
