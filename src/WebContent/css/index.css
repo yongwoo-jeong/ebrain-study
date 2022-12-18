@@ -80,6 +80,11 @@
   border-bottom: 1px solid black;
 }
 
+.post_category{
+  width: 20px;
+  margin-left: -16px;
+}
+
 svg{
   width: 15px;
   height: 15px;

@@ -62,7 +62,7 @@
           for(Post po : ls) {
         %>
           <div class="post">
-            <span><%= new FindCategoryId().findCategoryName(po.getCategory_id()) %></span>
+            <span class="post_category"><%= new FindCategoryId().findCategoryName(po.getCategory_id()) %></span>
 <%--            <% System.out.println(po.getFile_id());%>--%>
 <%--            <% if ( true ){%>--%>
 <%--            <svg></svg>--%>

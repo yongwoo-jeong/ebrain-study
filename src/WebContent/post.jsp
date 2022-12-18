@@ -62,7 +62,16 @@
 <%--        <%}%>--%>
     </div>
     <div class="comments_container">
-<%--댓글 테스트 인스턴스 만들고 작성 --%>
+        <div>
+            <div>시간</div>
+            <div>댓글내용</div>
+        </div>
+        <div>
+            <form method="post" action=<%=request.getContextPath()%>/postUploadAction.jsp name="upload">
+                <input type="text" placeholder="댓글을 입력해주세요" />
+                <input type="submit" class="save_button" value="저장" />
+            </form>
+        </div>
     </div>
     <div class="button_set_container">
         <div class="button_set">
