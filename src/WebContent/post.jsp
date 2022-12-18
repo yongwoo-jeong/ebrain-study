@@ -62,13 +62,13 @@
 <%--        <%}%>--%>
     </div>
     <div class="comments_container">
-        <div>
+        <div class="comment_row">
             <div>시간</div>
             <div>댓글내용</div>
         </div>
         <div>
             <form method="post" action=<%=request.getContextPath()%>/postUploadAction.jsp name="upload">
-                <input type="text" placeholder="댓글을 입력해주세요" />
+                <input class="comment_input" type="text" placeholder="댓글을 입력해주세요" />
                 <input type="submit" class="save_button" value="저장" />
             </form>
         </div>

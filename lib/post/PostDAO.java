@@ -1,5 +1,6 @@
 package post;
 
+import JdbcConnectionUtil.JdbcConnectionUtil;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -39,7 +40,7 @@ public class PostDAO {
             pstmt.setDate(6, sqlDate);
             pstmt.setInt(7,po.getCategory_id());
             result = pstmt.executeUpdate();
-            System.out.println(result+ "행이 삽입되었습니다.");
+            System.out.println("게시글"+result+ "행이 삽입되었습니다.");
 
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -48,7 +49,6 @@ public class PostDAO {
             util.close(conn);
         }
     }
-
 
     public Post selectPost(int num){
         Connection conn = null;

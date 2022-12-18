@@ -1,4 +1,4 @@
-package post;
+package JdbcConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,8 +21,8 @@ public class JdbcConnectionUtil {
     }
 
     /**
-     * JdbcConnectionUtil 인스턴스 생성/반환하는 메서드
-     * @return JdbcConnectionUtil 인스턴스를 리턴
+     * JdbcConnectionUtil.JdbcConnectionUtil 인스턴스 생성/반환하는 메서드
+     * @return JdbcConnectionUtil.JdbcConnectionUtil 인스턴스를 리턴
      */
     public static JdbcConnectionUtil getInstance() {
         if(instance == null){
@@ -32,7 +32,7 @@ public class JdbcConnectionUtil {
     }
 
     /**
-     * getInstance()를 통해 JdbcConnectionUtil 인스터스를 생성 후 사용
+     * getInstance()를 통해 JdbcConnectionUtil.JdbcConnectionUtil 인스터스를 생성 후 사용
      * JDBC 연결 객체를 생성, 반환하는 메서드
      * @return
      * @throws ClassNotFoundException
