@@ -1,18 +1,22 @@
-## Getting Started
+### 스터디 1주차  : 모델1으로 게시판 구현하기
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+JSP, 자바, JDBC, 마리아DB를 활용해 게시판구현하기
 
-## Folder Structure
+기능
 
-The workspace contains two folders by default, where:
+- [x] 게시글 전체보기
+- [x] 게시글 등록하기
+- [ ] 게시글 삭제하기 - 비밀번호 검증O
+- [x] 개별 게시글 보기
+- [x] 게시글 업로드하기(앞,뒷단 모두 검증)
+- [ ] 날짜/카테고리/내용 검색
+- [ ] 검색조건 게시글 페이지-목록 이동해도 초기화X
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+to do
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- [ ] 롬복 builder 활용해 VO 수정 
+- [ ] 멀티파트 폼데이터 과정 이해하기
+- [ ] DB file 테이블에 경로 추가하기
+- [ ] post, upload 등 모호한 클래스/파일명 수정
