@@ -1,6 +1,10 @@
 *.iml
 .idea
-
+.vscode
+apache-tomcat-9.0.10
+apache-tomcat-10.0.27
+out
+bin
 
 /apache-tomcat-9.0.10.zip
 /apache-tomcat-9.0.10

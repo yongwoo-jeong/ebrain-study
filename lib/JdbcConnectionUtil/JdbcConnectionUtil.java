@@ -17,8 +17,7 @@ public class JdbcConnectionUtil {
     private String url = "jdbc:mariadb://localhost:3306/eb_bbs";
     private String user = "root";
     private String password = "1224";
-    private JdbcConnectionUtil(){
-    }
+    private JdbcConnectionUtil(){}
 
     /**
      * JdbcConnectionUtil.JdbcConnectionUtil 인스턴스 생성/반환하는 메서드

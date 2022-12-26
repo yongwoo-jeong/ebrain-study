@@ -34,5 +34,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="cos" level="project" />
+    <orderEntry type="library" name="lombok" level="project" />
   </component>
 </module>
